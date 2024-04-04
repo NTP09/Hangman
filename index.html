@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="en-US">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="hangman.css">
+    <script src="hangman.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Hangman</h1>
+        <p>Use the alphabet below to guess the word. </p>
+        <p>Each letter of a word is worth 1 point. Meaning bigger words give you more points on the leaderboard. </p>
+        <p>Bigger words will give you more points on the leaderboard </p>
+
+
+
+    </div>
+    <div class="wrapper">
+        <div id="buttons">
+        </div>
+        <div id="hold">
+        </div>
+        <p id="mylives"></p>
+        <div class="container">
+            <a href="login.php" id="admin">Login</a>
+            <button id="reset" onclick="window.location.reload()">Play again</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
