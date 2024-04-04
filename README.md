@@ -1,3 +1,5 @@
+# Nicolas Lefebvre, 300251367
+
 ## Hangman Game Instructions 
 
 To start the Hangman game, follow these simple steps:
