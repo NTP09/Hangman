@@ -1,10 +1,9 @@
 <?php
-
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Hangman Word Database</title>
     <style>
@@ -14,12 +13,14 @@ session_start();
             margin: 20px auto;
             font-family: 'Roboto', sans-serif;
         }
-        
-        th, td {
+
+        th,
+        td {
             border: 2px solid black;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: grey;
         }
@@ -27,33 +28,33 @@ session_start();
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tr:nth-child(odd) {
             background-color: #ddd;
         }
 
-        body{
+        body {
             background: lightskyblue
         }
-        
     </style>
 </head>
-<body>
-    <a href = "./">Go back</a>
-    
-    <style>
 
+<body>
+    <a href="./">Home</a>
+
+    <style>
         body {
             margin: 30px;
         }
 
-        h2{
-            text-align:center;
+        h2 {
+            text-align: center;
             color: white;
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
         }
-        
-        a{
+
+        a {
             border-radius: 5px;
             background: lightskyblue;
             color: white;
@@ -67,25 +68,24 @@ session_start();
             font-family: 'Roboto', sans-serif;
         }
 
-        a:hover{
+        a:hover {
             transition: all 0.5s ease-in-out;
             background: white;
             border: solid 1px white;
             color: lightskyblue;
         }
-        </style>
-        <?php
-        // Connect to PostgreSQL database
-        $host = "localhost";
-        $dbname = "hangman";
-        $user = "postgres";
-        $password = $_SESSION['password'];
+    </style>
+    <?php
+    $host = "localhost";
+    $dbname = "hangman";
+    $user = "postgres";
+    $password = $_SESSION['password'];
 
-        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+    $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
-        echo '<h2>Hangman User Databse</h2>';
+    echo '<h2>Hangman User Databse</h2>';
 
-        ?>
+    ?>
     <table>
         <tr>
             <th>ID</th>
@@ -94,12 +94,10 @@ session_start();
         </tr>
         <?php
 
-        // Query to retrieve words from the database
         $query = "SELECT id, username, wins FROM users";
         $statement = $db->prepare($query);
         $statement->execute();
 
-        // Fetch and display words in HTML table
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row['id']) . "</td>";
@@ -118,21 +116,20 @@ session_start();
                 <th>ID</th>
                 <th>Word</th>
             </tr>
-        <?php
+            <?php
 
-        // Query to retrieve words from the database
-        $query = "SELECT id, word FROM words";
-        $statement = $db->prepare($query);
-        $statement->execute();
+            $query = "SELECT id, word FROM words";
+            $statement = $db->prepare($query);
+            $statement->execute();
 
-        // Fetch and display words in HTML table
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['word']) . "</td>";
-            echo "</tr>";
-        }
-        ?>
-    </table>
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['word']) . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
 </body>
+
 </html>

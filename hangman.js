@@ -1,6 +1,6 @@
 window.onload = function () {
 
-function database(password) {
+  function database(password) {
     const xhr = new XMLHttpRequest();
 
     const url = "database.php";
@@ -57,12 +57,12 @@ function database(password) {
     "y",
     "z"
   ];
-  
-  let word; 
-  let guess; 
-  let geusses = []; 
-  let lives; 
-  let counter; 
+
+  let word;
+  let guess;
+  let geusses = [];
+  let lives;
+  let counter;
   let space;
 
   let showLives = document.getElementById("mylives");
@@ -82,7 +82,7 @@ function database(password) {
     }
   };
 
-  function result () {
+  function result() {
     wordHolder = document.getElementById("hold");
     correct = document.createElement("ul");
 
@@ -96,17 +96,16 @@ function database(password) {
       } else {
         guess.innerHTML = "_";
       }
-
       geusses.push(guess);
       wordHolder.appendChild(correct);
       correct.appendChild(guess);
     }
   };
 
-  function comments () {
+  function comments() {
     showLives.innerHTML = "You have " + lives + " guesses left";
     if (lives < 1) {
-      showLives.innerHTML = "Game Over! The word was: "+word;
+      showLives.innerHTML = "Game Over! The correct word was: " + word;
       setTimeout(() => {
         window.location.reload();
       }, 3000)
@@ -128,7 +127,6 @@ function database(password) {
 
     xhr.open('GET', url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-
     xhr.send(data);
 
     xhr.onload = function () {
@@ -140,7 +138,7 @@ function database(password) {
     };
   }
 
-  function check () {
+  function check() {
     list.onclick = function () {
       let geuss = this.innerHTML;
       this.setAttribute("class", "active");
@@ -175,19 +173,17 @@ function database(password) {
 
     xhr.onload = function () {
       if (xhr.status === 200) {
-          play(xhr.responseText);
+        play(xhr.responseText);
       } else {
         console.error('Error sending unit to PHP.');
       }
     };
   }
 
-  function play (myWord) {
-
+  function play(myWord) {
     word = myWord.replace(/\s/g, "-");
-    console.log(word); 
+    console.log(word);
     buttons();
-
     geusses = [];
     lives = 10;
     counter = 0;
@@ -197,5 +193,5 @@ function database(password) {
   };
 
   database();
-  
+
 };

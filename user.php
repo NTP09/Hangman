@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,9 +44,9 @@
             margin-top: 10px;
             display: inline-block;
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <?php
@@ -57,11 +58,10 @@
 
         if (isset($_SESSION['user'])) {
             echo '<h1>Welcome ' . $_SESSION['user'] . '!</h1>';
-            echo '<form method="POST" action="">'; 
+            echo '<form method="POST" action="">';
             echo '<input type="submit" name="logout" value="Log Out">';
             echo '</form>';
             echo '<a href="./">Home</a>';
-
         } else {
             header('Location: ./');
             exit();
@@ -69,4 +69,5 @@
         ?>
     </div>
 </body>
+
 </html>

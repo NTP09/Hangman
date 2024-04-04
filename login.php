@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,10 @@
         body {
             font-family: 'Roboto', sans-serif;
             background-color: lightskyblue;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            margin-top: 200px
         }
 
         .container {
@@ -65,25 +64,25 @@
             text-decoration: none;
             border-radius: 3px;
             display: inline-block;
-            
+
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <?php
         session_start();
 
-        if(isset($_SESSION['user'])) {
+        if (isset($_SESSION['user'])) {
             header('Location: user.php');
             exit();
-        } 
-        else {
+        } else {
             $host = 'localhost';
             $dbname = 'hangman';
             $username = 'postgres';
             $password = $_SESSION['password'];
-            
+
             try {
                 $db = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password);
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -100,11 +99,11 @@
                 header('Location: ./');
                 exit();
             }
-            
+
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password']) && isset($_POST['username'])) {
                 $enteredPassword = $_POST['password'];
                 $enteredUsername = $_POST['username'];
-            
+
                 if ($enteredPassword == 'admin' && $enteredUsername == 'admin') {
                     header('Location: admin.php');
                     exit();
@@ -112,8 +111,8 @@
                     $query = $db->prepare("SELECT * FROM users WHERE username=:username");
                     $query->bindParam(':username', $enteredUsername);
                     $query->execute();
-            
-                    if($query->rowCount() > 0) {
+
+                    if ($query->rowCount() > 0) {
                         $row = $query->fetch(PDO::FETCH_ASSOC);
                         $temp = $row['password'];
                         if ($temp == $enteredPassword) {
@@ -122,7 +121,7 @@
                             exit();
                         } else {
                             echo '<h1>Wrong password</h1>';
-                            echo '<form method="POST" action="">'; 
+                            echo '<form method="POST" action="">';
                             echo '<input type="submit" name="again" value="Try again">';
                             echo '</form>';
                         }
@@ -137,7 +136,7 @@
                     }
                 }
             } else {
-                ?>
+        ?>
                 <h1>Login/Create Account</h1>
                 <p>Create an account or login to an existing account.</p>
                 <p>If you have admin role, please enter "admin" as username and password</p>
@@ -149,10 +148,11 @@
                 <form method="POST" action="">
                     <input type="submit" name="home" value="Home">
                 </form>
-                <?php
+        <?php
             }
         }
         ?>
     </div>
 </body>
+
 </html>
