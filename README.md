@@ -18,6 +18,11 @@ If, for any reason, the `setup.sh` file doesn't work, you can manually set up th
 3. Once completed, the server will start automatically.
 4. Navigate to `http://localhost:4000/` on your web browser.
 
+## Game Concept
+- You will have 10 guesses to correctly guess the word.
+- Each letter of a word is worth 1 point. Bigger words will give you more points!
+- If the player loses, the correct word will be displayed and the page will refresh automatically. 
+
 ## Home Page
 
 On the Home Page:
@@ -47,6 +52,10 @@ Once logged in as an admin:
 Once logged in:
 
 - You can log out of your account by clicking the "Login" button, which will provide options to logout or return to the Home Page.
+
+## Admin Page 
+- View all words in the database.
+- Access a table displaying players' top scores. 
 
 ## Visual Aspect 
 
