@@ -66,7 +66,6 @@ function database(password) {
   let space;
 
   let showLives = document.getElementById("mylives");
-  let showClue = document.getElementById("clue");
 
   let buttons = function () {
     myButtons = document.getElementById("buttons");
@@ -198,5 +197,5 @@ function database(password) {
   };
 
   database();
-
+  
 };

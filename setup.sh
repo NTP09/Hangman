@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -s -p "Enter PostgreSQL password: " pg_password
+read -s -p "Please Enter your personal PostgreSQL password: " pg_password
 
 export PGPASSWORD="$pg_password"
 

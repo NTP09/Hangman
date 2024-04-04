@@ -29,7 +29,6 @@ p{
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
-
 }
 
 #alphabet li:hover {
@@ -48,7 +47,6 @@ ul {
   font-size: 1.6em;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-
 }
 
 .active {
